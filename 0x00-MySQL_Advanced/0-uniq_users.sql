@@ -1,12 +1,11 @@
 -- Table structure for table 'Users';
 
-DROP TABLE IF EXISTS `Users`;
+DROP TABLE IF EXISTS users;
 
 -- Create a users table in mysql
 
-CREATE TABLE `Users` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(255) NOT NULL UNIQUE,
-  `name` VARCHAR(255)
-  PRIMARY KEY (`id`)
-)
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    name VARCHAR(255)
+);
