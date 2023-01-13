@@ -7,14 +7,21 @@ BEGIN
     DECLARE project_id INT DEFAULT 0;
     DECLARE project_count INT DEFAULT 0;
 
-    SELECT COUNT(id) INTO project_count FROM projects WHERE name = project_name;
-    IF project_count IS NULL THEN
-        INSERT INTO projects(name) VALUES (project_name);
+    SELECT COUNT(id) 
+        INTO project_count 
+        FROM projects 
+        WHERE name = project_name;
+
+    IF project_count = 0 THEN
+        INSERT INTO projects(name) 
+        VALUES (project_name);
     END IF;
+    
     SELECT id
         INTO project_id
         FROM projects
         WHERE name = project_name;
-    INSERT INTO corrections(user_id, project_id, score) VALUES (user_id, project_id, score);
+    INSERT INTO corrections(user_id, project_id, score) 
+    VALUES (user_id, project_id, score);
 END $$
 DELIMITER ;
