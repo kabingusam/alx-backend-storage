@@ -8,10 +8,8 @@ RETURN FLOAT
 BEGIN
     DECLARE ans FLOAT DEFAULT 0;
 
-    IF b = 0 THEN
-        RETURN 0;
-    ELSE
-        ans = a / b;
+    IF b != 0 THEN
+        SET ans = a / b;
     END IF;
     RETURN ans;
 END $$
