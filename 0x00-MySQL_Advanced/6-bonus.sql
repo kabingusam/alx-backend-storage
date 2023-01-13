@@ -2,10 +2,10 @@
 
 DROP PROCEDURE IF EXISTS AddBonus;
 DELIMITER $$
-CREATE PROCEDURE AddBonus(user_id INT,project_name VARCHAR(255),score FLOAT)
+CREATE PROCEDURE AddBonus(user_id INT, project_name VARCHAR(255), score FLOAT)
 BEGIN
-    DECLARE project_id INT;
-    DECLARE project_count INT;
+    DECLARE project_id INT DEFAULT 0;
+    DECLARE project_count INT DEFAULT 0;
 
     SELECT COUNT(id) INTO project_count FROM projects WHERE name = project_name;
     IF project_count IS NULL THEN
