@@ -3,7 +3,7 @@
 DROP TRIGGER IF EXISTS verfiy_email;
 DELIMITER $$
 CREATE TRIGGER verfiy_email
-BEFORE INSERT ON users
+BEFORE UPDATE ON users
 FOR EACH ROW
 BEGIN
     IF OLD.email != NEW.email THEN
