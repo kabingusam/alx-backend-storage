@@ -6,5 +6,5 @@ CREATE VIEW need_meeting AS
         WHERE score < 80 AND 
         (
             last_meeting IS NULL
-            OR last_meeting < SUBDATE(NOW(), INTERVAL 1 MONTH)
+            OR last_meeting < SUBDATE(CURRENT_DATE(), INTERVAL 1 MONTH)
         );
