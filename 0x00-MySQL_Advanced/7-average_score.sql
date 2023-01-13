@@ -7,9 +7,17 @@ BEGIN
     DECLARE total_score INT;
     DECLARE projects_count INT;
 
-
-    SELECT SUM(score) INTO total_score FROM corrections WHERE corrections.user_id = user_id;
-    SELECT COUNT(*) INTO projects_count FROM corrections WHERE corrections.user_id = user_id;
+    SELECT SUM(score) 
+        INTO total_score 
+        FROM corrections 
+        WHERE corrections.user_id = user_id;
+    SELECT COUNT(*) 
+        INTO projects_count 
+        FROM corrections 
+        WHERE corrections.user_id = user_id;
 
     UPDATE users;
-        
+        SET users.average_score = IF(projects_count = 0, 0, total_score / project_count)
+        WHERE user.id = user_id;
+END $$
+DELIMITER ;
