@@ -4,12 +4,15 @@ DROP FUNCTION IF EXISTS SafeDiv;
 DELIMITER $$
 
 CREATE FUNCTION SafeDiv(a INT, b INT)
-RETURN FLOAT
-BEGIN 
+RETURN FLOAT 
+BEGIN
+    DECLARE ans FLOAT DEFAULT 0;
+
     IF b = 0 THEN
         RETURN 0;
     ELSE
-        RETURN a / b;
+        ans = a / b;
     END IF;
+    RETURN ans;
 END $$
 DELIMITER ;
